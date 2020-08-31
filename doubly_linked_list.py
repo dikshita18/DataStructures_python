@@ -29,7 +29,7 @@ class DlinkedList:
             print(first.element)
             first = first.next              
                 
-    def add_head(self,e):
+    def add_head(self, e):
         temp = self.head 
         self.head = Node(e) 
         self.head.next = temp
@@ -50,7 +50,7 @@ class DlinkedList:
             self.head.previous = None
             self.size -= 1
             
-    def add_tail(self,e):
+    def add_tail(self, e):
         new_value = Node(e)
         new_value.previous = self.get_tail()
         self.get_tail().next = new_value
@@ -71,7 +71,7 @@ class DlinkedList:
     def find_second_last_element(self):               
         if self.size >= 2:
             first = self.head 
-            temp_counter = self.size -2
+            temp_counter = self.size - 2
             while temp_counter > 0:
                 first = first.next 
                 temp_counter -= 1 
@@ -80,10 +80,10 @@ class DlinkedList:
             print("Size not sufficient")            
         return None
     
-    def get_node_at(self,index):
+    def get_node_at(self, index):
         element_node = self.head
         counter = 0
-        if index > self.size-1:
+        if index > self.size - 1:
             print("Index out of bound")
             return None
         while(counter < index):
@@ -91,27 +91,27 @@ class DlinkedList:
             counter += 1
         return element_node
   
-    def get_prev_node_at(self,position):
+    def get_prev_node_at(self, position):
         if position == 0:
             print('No previous element')
             return None
         return self.get_node_at(position).previous
     
-    def remove_between_list(self,position):
-        if position > self.size-1:
+    def remove_between_list(self, position):
+        if position > self.size - 1:
             print("Index out of bound")
-        elif position == self.size-1:
+        elif position == self.size - 1:
             self.remove_tail()
         elif position == 0:
             self.remove_head()
         else:
-            prev_node = self.get_node_at(position-1)
-            next_node = self.get_node_at(position+1)
+            prev_node = self.get_node_at(position - 1)
+            next_node = self.get_node_at(position + 1)
             prev_node.next = next_node
             next_node.previous = prev_node
             self.size -= 1
             
-    def add_between_list(self,position,element):
+    def add_between_list(self, position, element):
         element_node = Node(element)
         if position > self.size:
             print("Index out of bound")
@@ -120,7 +120,7 @@ class DlinkedList:
         elif position == 0:
             self.add_head(element)
         else:
-            prev_node = self.get_node_at(position-1)
+            prev_node = self.get_node_at(position - 1)
             current_node = self.get_node_at(position)
             prev_node.next = element_node
             element_node.previous = prev_node
@@ -128,7 +128,7 @@ class DlinkedList:
             current_node.previous = element_node 
             self.size += 1
         
-    def search(self,search_value):
+    def search(self, search_value):
         index = 0 
         while (index < self.size):
             value = self.get_node_at(index)
@@ -142,7 +142,7 @@ class DlinkedList:
     
     def merge(self, linkedlist_value):
         if self.size > 0:
-            last_node = self.get_node_at(self.size-1)
+            last_node = self.get_node_at(self.size - 1)
             last_node.next = linkedlist_value.head
             linkedlist_value.head.previous = last_node
             self.size = self.size + linkedlist_value.size
